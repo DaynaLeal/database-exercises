@@ -21,7 +21,7 @@ INSERT INTO albums( artist_name, record_name, release_date, sales, genre) values
                    'Eagles',
                    'Hotel California',
                    '1987',
-                    30030000,
+                    30,
                     'rock'
                    );
 
