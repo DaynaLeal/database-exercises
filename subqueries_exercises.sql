@@ -19,4 +19,52 @@ WHERE hire_date IN (
     );
 
 
-# 2.
+# 2. Find all the titles held by all employees with the first name Aamod.
+# 314 total titles, 6 unique titles
+SELECT title AS 'Title'
+FROM titles
+WHERE emp_no IN (
+        SELECT emp_no
+        FROM employees
+        WHERE first_name = 'Aamod'
+    );
+
+
+# 3. Find all the current department managers that are female.
+# +------------+------------+
+# | first_name | last_name  |
+# +------------+------------+
+# | Isamu      | Legleitner |
+# | Karsten    | Sigstam    |
+# | Leon       | DasSarma   |
+# | Hilary     | Kambil     |
+# +------------+------------+
+SELECT CONCAT(first_name, ' ', last_name) AS employee_name
+FROM employees
+WHERE gender = 'F'
+AND emp_no IN (
+    SELECT emp_no
+    FROM dept_manager
+    WHERE to_date > NOW()
+);
+
+#BONUS
+# 1. Find all the department names that currently have female managers.
+# +-----------------+
+# | dept_name       |
+# +-----------------+
+# | Development     |
+# | Finance         |
+# | Human Resources |
+# | Research        |
+# +-----------------+
+
+
+
+# 2. Find the first and last name of the employee with the highest salary.
+# +------------+-----------+
+# | first_name | last_name |
+# +------------+-----------+
+# | Tokuyasu   | Pesch     |
+# +------------+-----------+
+
